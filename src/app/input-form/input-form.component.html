@@ -1,0 +1,95 @@
+
+<section class="container">
+  <form (ngSubmit)="submitUserInput(userInput)">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="uiEnglish">English</label>
+        <textarea id="uiEnglish"
+                  name="uiEnglish"
+                  [(ngModel)]="userInput.english"
+                  class="form-control"
+                  rows="2"
+                  tabindex="1" autofocus></textarea>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="uiKorean">한국어</label>
+        <textarea id="uiKorean"
+                  [(ngModel)]="userInput.korean"
+                  name="uiKorean"
+                  class="form-control" 
+                  rows="2"
+                  tabindex="2"></textarea>
+      </div>
+      <div class="form-group col-md-6 col-sm-6">
+        <label for="uiDayOfStudy">학습 일차</label>
+        <input  id="uiDayOfStudy"
+                type="number"
+                name="uiDayOfStudy"
+                class="form-control"
+                [(ngModel)]="userInput.dayOfStudy"
+                min=1>
+      </div>
+      <div class="form-group col-md-6 col-sm-6">
+        <label for="uiCardLevel">카드 레벨</label>
+        <input  id="uiCardLevel"
+                type="number"
+                name="uiCardLevel"
+                [(ngModel)]="userInput.cardLevel"
+                class="form-control"
+                min=1 max=7>
+      </div>
+      <div class="form-group col-md-6 col-sm-6">
+        <label for="uiReviewDates">복습 예정일차</label>
+        <input  id="uiReviewDates"
+                type="text"
+                name="uiReviewDates"
+                [(ngModel)]="userInput.reviewDates"
+                (blur)="onReviewDatesChange($event, userInput.reviewDates)"
+                class="form-control">
+      </div>
+      <div class="form-group col-md-6 col-sm-6">
+        <label for="uiCardType">카드 종류</label>
+        <!-- <input  id="uiCardType"
+                type="text"
+                name="uiCardType"
+                [(ngModel)]="userInput.cardType"
+                (blur)="onReviewDatesChange($event, userInput.reviewDates)"
+                class="form-control"> -->
+        <div class="btn-group btn-group-toggle">
+          <label class="btn-primary" ngbButtonLabel>
+            <input type="checkbox" ngbButton [(ngModel)]="cardType[0]" [ngModelOptions]="{standalone: true}"> Sentence
+          </label>
+          <label class="btn-primary" ngbButtonLabel>
+            <input type="checkbox" ngbButton [(ngModel)]="cardType[1]" [ngModelOptions]="{standalone: true}"> Phrasal Verb
+          </label>
+          <label class="btn-primary" ngbButtonLabel>
+            <input type="checkbox" ngbButton [(ngModel)]="cardType[2]" [ngModelOptions]="{standalone: true}"> Expression
+          </label>
+        </div>
+      </div>
+
+
+      <!-- 2 열로 변경하기 전 <div class="form-group col-md-12 col-sm-12">
+        <label for="uiReviewDates">복습 예정일차</label>
+        <input  id="uiReviewDates"
+                type="text"
+                name="uiReviewDates"
+                [(ngModel)]="userInput.reviewDates"
+                (blur)="onReviewDatesChange($event, userInput.reviewDates)"
+                class="form-control">
+      </div> -->
+      <div class="form-group col-md-12 col-sm-12">
+        <label for="uiGenDate">카드 생성일</label>
+        <input  id="uiGenDate"
+                type="date"
+                name="uiGenDate"
+                [ngModel]="userInput.genDate | date:'yyyy-MM-dd'"
+                (ngModelChange)="onGenDateChange($event)"
+                class="form-control">
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary" tabindex="3">Submit</button>
+      </div>
+    </div> <!-- ./form-row -->
+  </form>
+</section>
