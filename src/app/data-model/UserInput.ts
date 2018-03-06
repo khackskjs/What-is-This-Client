@@ -10,7 +10,8 @@ export default class UserInput {
   // public reviewDates:       Array<Number>;  // 몇일 몇일째에 리뷰 하고 싶은지 변경 가능하기 위해. to Be
   public reviewDates:       String;  // 몇일 몇일째에 리뷰 하고 싶은지 변경 가능하기 위해. to Be
   public cardType:          Number;       // bitwise 연산시 나오는 값으로 연산, 1: MAIN_SENTENCE / 2: EXPRESSION / 4: PHRASAL_VERB
-
+  public userId:            String;
+  
   constructor() {
     this.dayOfStudy = 1;
     this.cardLevel = 1;
