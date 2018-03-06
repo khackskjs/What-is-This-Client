@@ -1,11 +1,11 @@
-
 <section class="container">
-  <form (ngSubmit)="submitUserInput(userInput)">
+  <form (ngSubmit)="submitUserInput(userInput, userInputEnglish)">
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="uiEnglish">English</label>
         <textarea id="uiEnglish"
                   name="uiEnglish"
+                  #userInputEnglish
                   [(ngModel)]="userInput.english"
                   class="form-control"
                   rows="2"
@@ -49,12 +49,6 @@
       </div>
       <div class="form-group col-md-6 col-sm-6">
         <label for="uiCardType">카드 종류</label>
-        <!-- <input  id="uiCardType"
-                type="text"
-                name="uiCardType"
-                [(ngModel)]="userInput.cardType"
-                (blur)="onReviewDatesChange($event, userInput.reviewDates)"
-                class="form-control"> -->
         <div class="btn-group btn-group-toggle">
           <label class="btn-primary" ngbButtonLabel>
             <input type="checkbox" ngbButton [(ngModel)]="cardType[0]" [ngModelOptions]="{standalone: true}"> Sentence

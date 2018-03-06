@@ -25,13 +25,17 @@ export class InputFormComponent implements OnInit {
     this.userInput = new UserInput();
   }
 
-  onClick(value) {
-    console.log(value);
+  private clearUserInput() {
+    this.userInput.korean = '';
+    this.userInput.english = '';
   }
 
-  submitUserInput(userInput) {
-    console.log(this.userInput);
+  submitUserInput(userInput, element) {
     this.dataService.addNewCard(userInput);
+
+    this.clearUserInput();
+    element.focus();
+
   }
 
   onGenDateChange(date) {
