@@ -1,0 +1,18 @@
+<section class="container">  
+  <div class="form-row">
+    <div class="form-group col-md-6 col-sm-6">
+      <label for="uiCardType">카드 종류</label>
+      <div class="btn-group btn-group-toggle">
+        <label class="btn-primary" ngbButtonLabel>
+          <input type="checkbox" ngbButton [(ngModel)]="cardType[0]" [ngModelOptions]="{standalone: true}"> Sentence
+        </label>
+        <label class="btn-primary" ngbButtonLabel>
+          <input type="checkbox" ngbButton [(ngModel)]="cardType[1]" [ngModelOptions]="{standalone: true}"> Phrasal Verb
+        </label>
+        <label class="btn-primary" ngbButtonLabel>
+          <input type="checkbox" ngbButton [(ngModel)]="cardType[2]" [ngModelOptions]="{standalone: true}"> Expression
+        </label>
+      </div>
+    </div>
+  </div>
+</section>

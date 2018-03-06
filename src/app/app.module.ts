@@ -7,12 +7,13 @@ import { AppComponent } from './app.component';
 import { InputFormComponent } from './input-form/input-form.component';
 import { HttpModule } from '@angular/http';
 import DataService from './common/dataService';
-
+import { CardReviewComponent } from './card-review/card-review.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InputFormComponent
+    InputFormComponent,
+    CardReviewComponent,
   ],
   imports: [
     NgbModule.forRoot(),
