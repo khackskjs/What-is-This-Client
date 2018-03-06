@@ -4,4 +4,23 @@
     Welcome to {{ title }}!
   </h1>
 </div>
-<app-input-form></app-input-form>
+<ngb-tabset justify="center">
+    <ngb-tab>
+      <ng-template ngbTabTitle><b>카드</b> 작성/수정</ng-template>
+      <ng-template ngbTabContent>
+        <app-input-form></app-input-form>        
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab>
+      <ng-template ngbTabTitle><b>카드</b> 복습</ng-template>
+      <ng-template ngbTabContent>
+        <app-card-review></app-card-review>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab title="A very long nav title">
+      <ng-template ngbTabContent>
+        
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
+
