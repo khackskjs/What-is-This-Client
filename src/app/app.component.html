@@ -1,26 +1,27 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
     Welcome to {{ title }}!
   </h1>
 </div>
-<ngb-tabset justify="center">
-    <ngb-tab>
-      <ng-template ngbTabTitle><b>카드</b> 작성/수정</ng-template>
-      <ng-template ngbTabContent>
-        <app-input-form></app-input-form>        
-      </ng-template>
-    </ngb-tab>
-    <ngb-tab>
-      <ng-template ngbTabTitle><b>카드</b> 복습</ng-template>
-      <ng-template ngbTabContent>
-        <app-card-review></app-card-review>
-      </ng-template>
-    </ngb-tab>
-    <ngb-tab title="A very long nav title">
-      <ng-template ngbTabContent>
-        
-      </ng-template>
-    </ngb-tab>
-  </ngb-tabset>
 
+<ngb-tabset justify="center">
+  <ngb-tab>
+    <ng-template ngbTabTitle>
+      <b>카드</b> 작성/수정</ng-template>
+    <ng-template ngbTabContent>
+      <app-input-form></app-input-form>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab>
+    <ng-template ngbTabTitle>
+      <b>카드</b> 복습</ng-template>
+    <ng-template ngbTabContent>
+      <app-card-review></app-card-review>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab title="reserved(Test)">
+    <ng-template ngbTabContent>
+      <app-test-angular-study></app-test-angular-study>      
+    </ng-template>
+  </ngb-tab>
+</ngb-tabset>
