@@ -1,0 +1,15 @@
+<section class="container">
+  <form (ngSubmit)="submitUserInput(userInput, userInputEnglish)">
+    <div class="form-row">
+      <div class="form-group col-md-6 col-sm-6">
+        <label for="userId">ID</label>
+        <input  id="userId" 
+                type="text" 
+                name="userId" 
+                class="form-control" 
+                [(ngModel)]="userInfo.userId" 
+                (change)="onUserIdChange()">
+      </div>
+    </div>
+  </form>
+</section>

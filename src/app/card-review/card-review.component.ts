@@ -12,8 +12,14 @@ export class CardReviewComponent implements OnInit {
   cardType = {};
 
   constructor(dataService:DataService) {
-    console.log('card-review constructor');
-    dataService.getCards({ userId: 'kjs' });
+    let userId = localStorage.getItem('userId');
+    if (!userId) {
+      userId = 'kjs';
+      localStorage.setItem('userId', 'kjs');
+    }
+    
+    dataService.getCards({ userId: userId })
+      .subscribe(data => console.log(data));
   }
 
   ngOnInit() {

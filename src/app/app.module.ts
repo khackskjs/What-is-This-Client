@@ -11,12 +11,14 @@ import DataService from './common/dataService';
 import { CardReviewComponent } from './card-review/card-review.component';
 import { TestAngularStudyComponent } from './test-angular-study/test-angular-study.component';
 import { clock } from './common/reducers';
+import { UserInfoComponent } from './user-info/user-info.component';
 @NgModule({
   declarations: [
     AppComponent,
     InputFormComponent,
     CardReviewComponent,
     TestAngularStudyComponent,
+    UserInfoComponent,
   ],
   imports: [
     NgbModule.forRoot(),
