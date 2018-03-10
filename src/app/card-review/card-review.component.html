@@ -1,18 +1,80 @@
-<section class="container">  
-  <div class="form-row">
-    <div class="form-group col-md-6 col-sm-6">
-      <label for="uiCardType">카드 종류</label>
-      <div class="btn-group btn-group-toggle">
-        <label class="btn-primary" ngbButtonLabel>
-          <input type="checkbox" ngbButton [(ngModel)]="cardType[0]" [ngModelOptions]="{standalone: true}"> Sentence
-        </label>
-        <label class="btn-primary" ngbButtonLabel>
-          <input type="checkbox" ngbButton [(ngModel)]="cardType[1]" [ngModelOptions]="{standalone: true}"> Phrasal Verb
-        </label>
-        <label class="btn-primary" ngbButtonLabel>
-          <input type="checkbox" ngbButton [(ngModel)]="cardType[2]" [ngModelOptions]="{standalone: true}"> Expression
-        </label>
+<div class="container">
+  <section>
+    <div class="form-row">
+      <div class="form-group col-md-6 col-sm-6">
+        <label for="reviewDayCount">복습 일차</label>
+        <input id="reviewDayCount" type="number" name="reviewDayCount" [(ngModel)]="reviewDayCount" (change)="onReviewDayCountChange()">
+      </div>
+      <div class="col-6"></div>
+
+      <div class="form-group col-md-6 col-sm-6">
+        <!-- <label for="uiCardType">카드 종류</label> -->
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="">카드 종류</span>
+          <div class="btn-group btn-group-toggle">
+            <label class="btn-primary" ngbButtonLabel>
+              <input type="checkbox" ngbButton [(ngModel)]="cardType[0]" [ngModelOptions]="{standalone: true}"> Sentence
+            </label>
+            <label class="btn-primary" ngbButtonLabel>
+              <input type="checkbox" ngbButton [(ngModel)]="cardType[1]" [ngModelOptions]="{standalone: true}"> Phrasal Verb
+            </label>
+            <label class="btn-primary" ngbButtonLabel>
+              <input type="checkbox" ngbButton [(ngModel)]="cardType[2]" [ngModelOptions]="{standalone: true}"> Expression
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <button (click)="roadCards()">불러 오기</button>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- <section>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="ciEnglish">English</label>
+        <textarea id="ciEnglish" name="ciEnglish" #userInputEnglish [(ngModel)]="cardInfo.english" class="form-control" rows="2"
+          tabindex="1" autofocus></textarea>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="ciKorean">한국어</label>
+        <textarea id="ciKorean" [(ngModel)]="cardInfo.korean" name="ciKorean" class="form-control" rows="2" tabindex="2"></textarea>
+      </div>
+      <div class="form-group col-md-6 col-sm-6">
+        <label for="ciDayOfStudy">학습 일차</label>
+        <input id="ciDayOfStudy" type="number" name="ciDayOfStudy" class="form-control" [(ngModel)]="cardInfo.dayOfStudy" min=1>
+      </div>
+      <div class="form-group col-md-6 col-sm-6">
+        <label for="ciCardLevel">카드 레벨</label>
+        <input id="ciCardLevel" type="number" name="ciCardLevel" [(ngModel)]="cardInfo.cardLevel" class="form-control" min=1 max=7>
+      </div>
+      <div class="form-group col-md-6 col-sm-6">
+        <label for="ciReviewDates">복습 예정일차</label>
+        <input id="ciReviewDates" type="text" name="ciReviewDates" [(ngModel)]="cardInfo.reviewDates" (blur)="onReviewDatesChange($event, cardInfo.reviewDates)"
+          class="form-control">
+      </div>
+      <div class="form-group col-md-6 col-sm-6">
+        <label for="ciCardType">카드 종류</label>
+        <div class="btn-group btn-group-toggle">
+          <label class="btn-primary" ngbButtonLabel>
+            <input type="checkbox" ngbButton [(ngModel)]="cardType[0]" [ngModelOptions]="{standalone: true}"> Sentence
+          </label>
+          <label class="btn-primary" ngbButtonLabel>
+            <input type="checkbox" ngbButton [(ngModel)]="cardType[1]" [ngModelOptions]="{standalone: true}"> Phrasal Verb
+          </label>
+          <label class="btn-primary" ngbButtonLabel>
+            <input type="checkbox" ngbButton [(ngModel)]="cardType[2]" [ngModelOptions]="{standalone: true}"> Expression
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group col-md-12 col-sm-12">
+        <label for="ciGenDate">카드 생성일</label>
+        <input id="ciGenDate" type="date" name="ciGenDate" [ngModel]="cardInfo.genDate | date:'yyyy-MM-dd'" (ngModelChange)="onGenDateChange($event)"
+          class="form-control">
+      </div>
+
+    </div>
+  </section> -->
+</div>

@@ -1,18 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+import UserInformation from '../data-model/UserInformation';
+import UserInfoService from '../common/userInforService';
 
 @Component({
   selector: 'app-user-info',
   templateUrl: './user-info.component.html'
 })
 export class UserInfoComponent implements OnInit {
-  userInfo: Object = {};
+  userId: String;
+  reviewDayCount: Number;
 
-  constructor() {
-    this.userInfo['userId'] = 'kjs';
+  constructor(private userInfoService: UserInfoService) {
+    this.userId = userInfoService.getUserId();
+    this.reviewDayCount = userInfoService.getReviewDayCount();
   }
 
   onUserIdChange() {
-    localStorage.setItem('userId', this.userInfo['userId']);
+    this.userInfoService.setUserId(this.userId);
+  }
+  onReviewDayCountChange() {
+    this.userInfoService.setReviewDayCount(this.reviewDayCount);
   }
   ngOnInit() {
   }

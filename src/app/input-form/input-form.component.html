@@ -1,54 +1,54 @@
 <section class="container">
-  <form (ngSubmit)="submitUserInput(userInput, userInputEnglish)">
+  <form (ngSubmit)="submitUserInput(cardInfo, userInputEnglish)">
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="uiEnglish">English</label>
-        <textarea id="uiEnglish"
-                  name="uiEnglish"
+        <label for="ciEnglish">English</label>
+        <textarea id="ciEnglish"
+                  name="ciEnglish"
                   #userInputEnglish
-                  [(ngModel)]="userInput.english"
+                  [(ngModel)]="cardInfo.english"
                   class="form-control"
                   rows="2"
                   tabindex="1" autofocus></textarea>
       </div>
       <div class="form-group col-md-6">
-        <label for="uiKorean">한국어</label>
-        <textarea id="uiKorean"
-                  [(ngModel)]="userInput.korean"
-                  name="uiKorean"
+        <label for="ciKorean">한국어</label>
+        <textarea id="ciKorean"
+                  [(ngModel)]="cardInfo.korean"
+                  name="ciKorean"
                   class="form-control" 
                   rows="2"
                   tabindex="2"></textarea>
       </div>
       <div class="form-group col-md-6 col-sm-6">
-        <label for="uiDayOfStudy">학습 일차</label>
-        <input  id="uiDayOfStudy"
+        <label for="ciDayOfStudy">학습 일차</label>
+        <input  id="ciDayOfStudy"
                 type="number"
-                name="uiDayOfStudy"
+                name="ciDayOfStudy"
                 class="form-control"
-                [(ngModel)]="userInput.dayOfStudy"
+                [(ngModel)]="cardInfo.dayOfStudy"
                 min=1>
       </div>
       <div class="form-group col-md-6 col-sm-6">
-        <label for="uiCardLevel">카드 레벨</label>
-        <input  id="uiCardLevel"
+        <label for="ciCardLevel">카드 레벨</label>
+        <input  id="ciCardLevel"
                 type="number"
-                name="uiCardLevel"
-                [(ngModel)]="userInput.cardLevel"
+                name="ciCardLevel"
+                [(ngModel)]="cardInfo.cardLevel"
                 class="form-control"
                 min=1 max=7>
       </div>
       <div class="form-group col-md-6 col-sm-6">
-        <label for="uiReviewDates">복습 예정일차</label>
-        <input  id="uiReviewDates"
+        <label for="ciReviewDates">복습 예정일차</label>
+        <input  id="ciReviewDates"
                 type="text"
-                name="uiReviewDates"
-                [(ngModel)]="userInput.reviewDates"
-                (blur)="onReviewDatesChange($event, userInput.reviewDates)"
+                name="ciReviewDates"
+                [(ngModel)]="cardInfo.reviewDates"
+                (blur)="onReviewDatesChange($event, cardInfo.reviewDates)"
                 class="form-control">
       </div>
       <div class="form-group col-md-6 col-sm-6">
-        <label for="uiCardType">카드 종류</label>
+        <label for="ciCardType">카드 종류</label>
         <div class="btn-group btn-group-toggle">
           <label class="btn-primary" ngbButtonLabel>
             <input type="checkbox" ngbButton [(ngModel)]="cardType[0]" [ngModelOptions]="{standalone: true}"> Sentence
@@ -62,22 +62,12 @@
         </div>
       </div>
 
-
-      <!-- 2 열로 변경하기 전 <div class="form-group col-md-12 col-sm-12">
-        <label for="uiReviewDates">복습 예정일차</label>
-        <input  id="uiReviewDates"
-                type="text"
-                name="uiReviewDates"
-                [(ngModel)]="userInput.reviewDates"
-                (blur)="onReviewDatesChange($event, userInput.reviewDates)"
-                class="form-control">
-      </div> -->
       <div class="form-group col-md-12 col-sm-12">
-        <label for="uiGenDate">카드 생성일</label>
-        <input  id="uiGenDate"
+        <label for="ciGenDate">카드 생성일</label>
+        <input  id="ciGenDate"
                 type="date"
-                name="uiGenDate"
-                [ngModel]="userInput.genDate | date:'yyyy-MM-dd'"
+                name="ciGenDate"
+                [ngModel]="cardInfo.genDate | date:'yyyy-MM-dd'"
                 (ngModelChange)="onGenDateChange($event)"
                 class="form-control">
       </div>

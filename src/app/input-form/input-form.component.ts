@@ -2,7 +2,7 @@ import { Component, OnInit, Output, Input, ViewEncapsulation } from '@angular/co
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModel } from '@angular/forms';
 
-import UserInput from '../data-model/UserInput';
+import CardInformation from '../data-model/CardInformation';
 import DataService from '../common/dataService';
 
 @Component({
@@ -11,37 +11,34 @@ import DataService from '../common/dataService';
   styleUrls: ['./input-form.component.css']
 })
 export class InputFormComponent implements OnInit {
-  userInput: UserInput;
-  cardType = {  // 나중에 각 자리를 리용해서 bitwise 연산해서, userInput.cardType 에 대응할 것
+  cardInfo: CardInformation;
+  cardType = {  // 나중에 각 자리를 리용해서 bitwise 연산해서, cardInfo.cardType 에 대응할 것
     "0": true,  // Sentense
     "1": false,
     "2": false,
   };
   
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   constructor(private dataService: DataService) {
-    this.userInput = new UserInput();
+    this.cardInfo = new CardInformation();
   }
 
   private clearUserInput() {
-    this.userInput.korean = '';
-    this.userInput.english = '';
+    this.cardInfo.korean = '';
+    this.cardInfo.english = '';
   }
 
-  submitUserInput(userInput, element) {
-    this.dataService.addNewCard(userInput);
-
+  submitUserInput(cardInfo, element) {
+    this.dataService.addNewCard(cardInfo);
     this.clearUserInput();
     element.focus();
-
   }
 
   onGenDateChange(date) {
-    this.userInput.genDate = date;
+    this.cardInfo.genDate = date;
   }
   onReviewDatesChange(event, dates) {
-    this.userInput.setReviewDates(dates);
+    this.cardInfo.setReviewDates(dates);
   }
 }

@@ -1,5 +1,5 @@
 <section class="container">
-  <form (ngSubmit)="submitUserInput(userInput, userInputEnglish)">
+  <form>
     <div class="form-row">
       <div class="form-group col-md-6 col-sm-6">
         <label for="userId">ID</label>
@@ -7,8 +7,17 @@
                 type="text" 
                 name="userId" 
                 class="form-control" 
-                [(ngModel)]="userInfo.userId" 
+                [(ngModel)]="userId"
                 (change)="onUserIdChange()">
+      </div>
+      <div class="form-group col-md-6 col-sm-6">
+        <label for="reviewDayCount">복습 일차</label>
+        <input  id="reviewDayCount" 
+                type="number" 
+                name="reviewDayCount" 
+                class="form-control" 
+                [(ngModel)]="reviewDayCount" 
+                (change)="onReviewDayCountChange()">
       </div>
     </div>
   </form>

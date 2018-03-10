@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import DataService from '../common/dataService';
-
 import { Observable } from 'rxjs/Observable';
+
+import CardInformation from '../data-model/CardInformation';
+import DataService from '../common/dataService';
+import UserInfoService from '../common/userInforService';
 
 @Component({
   selector: 'app-card-review',
@@ -10,20 +12,39 @@ import { Observable } from 'rxjs/Observable';
 })
 export class CardReviewComponent implements OnInit {
   cardType = {};
+  cardList: Array<CardInformation>;
+  reviewDayCount: Number;
 
-  constructor(dataService:DataService) {
-    let userId = localStorage.getItem('userId');
-    if (!userId) {
-      userId = 'kjs';
-      localStorage.setItem('userId', 'kjs');
-    }
+  constructor(private dataService:DataService, private userInfoService: UserInfoService) {
+    this.reviewDayCount = this.userInfoService.getReviewDayCount();
+    this.cardList = new Array<CardInformation>();
     
-    dataService.getCards({ userId: userId })
-      .subscribe(data => console.log(data));
+    this.getCards();
   }
 
-  ngOnInit() {
-    console.log('card-review ngOnInit');
+  getCards() {
+    let reqParams = this.makeRequest();
+    this.dataService.getCards(reqParams)
+      .subscribe(cardList => {
+        this.cardList = cardList;
+        console.log(cardList)
+      });
+  }
+
+  makeRequest() {
+    let userId: String = this.userInfoService.getUserId();
+    let reviewDayCount = this.reviewDayCount;
+    return { userId, reviewDayCount };
+  }
+
+  ngOnInit() {}
+
+  onReviewDayCountChange() {
+    console.log(this.reviewDayCount)
+  }
+
+  private roadCards() {
+    console.log('roadCards');
   }
 
 }
