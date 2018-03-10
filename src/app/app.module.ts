@@ -1,3 +1,4 @@
+import { CardDecksComponent } from './card-review/card-decks/card-decks.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -21,6 +22,7 @@ import UserInfoService from './common/userInforService';
     CardReviewComponent,
     TestAngularStudyComponent,
     UserInfoComponent,
+    CardDecksComponent,
   ],
   imports: [
     NgbModule.forRoot(),

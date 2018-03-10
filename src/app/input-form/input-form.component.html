@@ -1,11 +1,11 @@
 <section class="container">
-  <form (ngSubmit)="submitUserInput(cardInfo, userInputEnglish)">
+  <form (ngSubmit)="submitUserInput(cardInfo, userInfoEnglish)">
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="ciEnglish">English</label>
         <textarea id="ciEnglish"
                   name="ciEnglish"
-                  #userInputEnglish
+                  #userInfoEnglish
                   [(ngModel)]="cardInfo.english"
                   class="form-control"
                   rows="2"
@@ -65,9 +65,9 @@
       <div class="form-group col-md-12 col-sm-12">
         <label for="ciGenDate">카드 생성일</label>
         <input  id="ciGenDate"
-                type="date"
+                type="datetime-local"
                 name="ciGenDate"
-                [ngModel]="cardInfo.genDate | date:'yyyy-MM-dd'"
+                [ngModel]="cardInfo.genDate | date:'yyyy-MM-ddTHH:mm:ss'"
                 (ngModelChange)="onGenDateChange($event)"
                 class="form-control">
       </div>

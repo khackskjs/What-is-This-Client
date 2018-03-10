@@ -1,0 +1,23 @@
+<div class="card-deck">
+  <div class="card text-center" *ngIf="cardList[currentCardIndex] as currCard">
+      <div class="flip">
+          <div class="flipped-card" [ngClass]="{'flipped':showCard}" (click)="showCard = !showCard"
+          style="vertical-align: middle;">
+            <div class="face front">
+              {{ currCard.korean }}
+
+            </div>
+            <div class="face back card-text">
+              {{ currCard.english }}
+            </div>
+          </div>
+        </div>    
+    
+    <div class="card-body">
+      <p class="card-text">{{ currCard.dayOfStudy }} 일차</p>
+      <p class="card-text">
+        <small class="text-muted">{{ currCard.genDate | date:'dd MMM yy\' hh:mm:ss' }}</small>
+      </p>
+    </div>
+  </div>
+</div>
