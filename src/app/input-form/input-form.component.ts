@@ -2,7 +2,7 @@ import { Component, OnInit, Output, Input, ViewEncapsulation } from '@angular/co
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModel } from '@angular/forms';
 
-import CardInformation from '../data-model/CardInformation';
+import { CardInformation } from '../data-model/CardInformation';
 import DataService from '../common/dataService';
 
 @Component({
@@ -30,9 +30,13 @@ export class InputFormComponent implements OnInit {
   }
 
   submitUserInput(cardInfo, element) {
-    this.dataService.addNewCard(cardInfo);
-    this.clearUserInput();
-    element.focus();
+    console.log(cardInfo);
+    this.dataService.addNewCard(cardInfo)
+      .subscribe((data) => {
+        console.log(data);
+        this.clearUserInput();
+        element.focus();
+      });
   }
 
   onGenDateChange(date) {

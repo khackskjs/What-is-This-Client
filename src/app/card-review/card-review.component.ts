@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import CardInformation from '../data-model/CardInformation';
+import { CardInformation } from '../data-model/CardInformation';
 import DataService from '../common/dataService';
 import UserInfoService from '../common/userInforService';
 

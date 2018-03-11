@@ -1,35 +1,11 @@
-/* @media(max-width:767px) {
-  button {
-    font-size: 30px;
-  }
+.review-result-badge {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  font-size: 10px; 
 }
 
-@media(min-width:768px) {
-  button {
-    font-size: 40px;
-  }
-}
-
-@media(min-width:992px) {
-  button {
-    font-size: 50px;
-  }
-}
-
-@media(min-width:1200px) {
-  button {
-    font-size: 60px;
-  }
-}
-
-section {
-  background: #ccc;
-} */
-
-body {
-  background: #ccc;
-}
-
+/* flipping card css */
 .flip {
   -webkit-perspective: 800;
   width: 75%;
@@ -56,7 +32,6 @@ body {
   -webkit-backface-visibility: hidden;
   z-index: 2;
   font-family: Georgia;
-  font-size: 3em;
   text-align: center;
   display:flex;
   justify-content:center;
@@ -80,7 +55,29 @@ body {
 .flip .flipped-card .back {
   -webkit-transform: rotatex(-180deg);
   background: blue;
-  background: pink;
+  background: whitesmoke;
   color: black;
   cursor: pointer;
+}
+
+/*  responsive app  */
+@media(max-width:767px) {
+  .flip .flipped-card .face {
+    font-size: 30px;
+  }
+}
+@media(min-width:768px) {
+  .flip .flipped-card .face {
+    font-size: 35px;
+  }
+}
+@media(min-width:992px) {
+  .flip .flipped-card .face {
+    font-size: 40px;
+  }
+}
+@media(min-width:1200px) {
+  .flip .flipped-card .face {
+    font-size: 45px;
+  }
 }

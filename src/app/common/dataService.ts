@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from "@angular/core";
 import * as _ from 'underscore';
 
-import CardInformation from "../data-model/CardInformation";
+import { CardInformation } from "../data-model/CardInformation";
 
 const SERVER_URL = 'http://localhost:8000';
 
@@ -14,7 +14,6 @@ export default class DataService {
   public addNewCard(cardInfo: CardInformation) {
     console.log('addNewCard ', cardInfo);
     return this.http.post(`${SERVER_URL}/card`, cardInfo);
-      // .subscribe(results => console.log(results));
   }
 
   /**

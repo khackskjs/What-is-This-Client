@@ -1,18 +1,20 @@
 <div class="card-deck">
   <div class="card text-center" *ngIf="cardList[currentCardIndex] as currCard">
-      <div class="flip">
-          <div class="flipped-card" [ngClass]="{'flipped':showCard}" (click)="showCard = !showCard"
-          style="vertical-align: middle;">
-            <div class="face front">
-              {{ currCard.korean }}
+    <div class="flip">
+      <div class="flipped-card" [ngClass]="{'flipped':showCard}" (click)="showCard = !showCard" style="vertical-align: middle;">
+        <div class="face front" >
+          <div class="badge badge-pill badge-success review-result-badge" *ngIf="reviewCard('pass')">Pass</div>
+          <div class="badge badge-pill badge-warning review-result-badge" *ngIf="reviewCard('fail')">Fail</div>
+          {{ currCard.korean }}
+        </div>
+        <div class="face back card-text">
+          <div class="badge badge-pill badge-success review-result-badge" *ngIf="reviewCard('pass')">Pass</div>
+          <div class="badge badge-pill badge-warning review-result-badge" *ngIf="reviewCard('fail')">Fail</div>
+          {{ currCard.english }}
+        </div>
+      </div>
+    </div>
 
-            </div>
-            <div class="face back card-text">
-              {{ currCard.english }}
-            </div>
-          </div>
-        </div>    
-    
     <div class="card-body">
       <p class="card-text">{{ currCard.dayOfStudy }} 일차</p>
       <p class="card-text">

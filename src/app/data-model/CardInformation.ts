@@ -1,6 +1,18 @@
 import * as rangeParser from 'parse-numeric-range';
 
-export default class CardInformation {
+export enum CARD_COLOR {
+  PASS = 'blue',
+  FAIL = 'yello',
+  NONE = 'white'
+}
+
+export enum REVIEW_RESULT {
+  NONE = 0,
+  PASS,
+  FAIL,
+}
+
+export class CardInformation {
   public english:           String;
   public korean:            String;
   public dayOfStudy:        Number;       // 학습 일자 (ex: 4일자)
@@ -13,6 +25,12 @@ export default class CardInformation {
   public userId:            String;
   public nextReviewDayCount:Number;       // 다음번 복습 예정 일차. <= UserInformation.reviewDayCount 경우, 복습하게 됨
   
+  /** For review */
+  public reviewResult:          REVIEW_RESULT;  // 최근 복습 결과
+
+
+  // todo: 리뷰 결과를 이용해서 뭘 많이 틀렸는지 등을 뽑아 낼 수 있음
+
   constructor() {
     this.dayOfStudy = 1;
     this.cardLevel = 1;
@@ -20,6 +38,7 @@ export default class CardInformation {
     this.dayCountForReview = 1;
     this.reviewDates = [1,2,4,8,16,32,64].join(',');
     this.cardType = 1;  // MAIN_SENTENCE
+    this.reviewResult = REVIEW_RESULT.NONE;
   }
   
   /**
@@ -48,6 +67,7 @@ export default class CardInformation {
     newCI.korean = ci.korean;
     newCI.reviewDates = ci.reviewDates;
     newCI.userId = ci.userId;
+    newCI.reviewResult = ci.reviewResult;
     return newCI;
   }
 
