@@ -1,27 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 import UserInformation from '../data-model/UserInformation';
-import UserInfoService from '../common/userInforService';
+import UserService from '../common/userService';
 
 @Component({
   selector: 'app-user-info',
+  styles: [`
+    .ng-valid {
+      border-color: green;
+    }
+    .ng-invalid {
+      border-color: red;
+    }
+  `],
   templateUrl: './user-info.component.html'
 })
 export class UserInfoComponent implements OnInit {
-  userId: String;
+  userInfo: UserInformation;
+  // userId: String;
   reviewDayCount: Number;
 
-  constructor(private userInfoService: UserInfoService) {
-    this.userId = userInfoService.getUserId();
-    this.reviewDayCount = userInfoService.getReviewDayCount();
+  constructor(private userService: UserService) {
+    this.userInfo = new UserInformation();
   }
 
-  onUserIdChange() {
-    this.userInfoService.setUserId(this.userId);
-  }
-  onReviewDayCountChange() {
-    this.userInfoService.setReviewDayCount(this.reviewDayCount);
-  }
   ngOnInit() {
   }
+  
+  login(formValue) {
+    let form = formValue.value,
+        userInfo = new UserInformation();
 
+    [userInfo.userId, userInfo.userPw] = [form.userId, form.userPw];
+
+    this.userService.login(userInfo)
+      .subscribe((userInfo: UserInformation) => {
+        this.userInfo = userInfo;
+        this.reviewDayCount = userInfo.reviewDayCount;
+      });
+  }
 }

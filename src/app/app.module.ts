@@ -13,7 +13,7 @@ import { CardReviewComponent } from './card-review/card-review.component';
 import { TestAngularStudyComponent } from './test-angular-study/test-angular-study.component';
 import { clock } from './common/reducers';
 import { UserInfoComponent } from './user-info/user-info.component';
-import UserInfoService from './common/userInforService';
+import UserService from './common/userService';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,7 @@ import UserInfoService from './common/userInforService';
     ReactiveFormsModule,
     StoreModule.forRoot({ reducer: clock })
   ],
-  providers: [DataService, UserInfoService],
+  providers: [DataService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
