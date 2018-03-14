@@ -1,14 +1,18 @@
+
+  
 <div class="container">
   <section>
     <div class="form-row">
-      <div class="form-group col-md-6 col-sm-6">
-        <label for="reviewDayCount">복습 일차</label>
-        <input id="reviewDayCount" type="number" name="reviewDayCount" [(ngModel)]="reviewDayCount" (change)="onReviewDayCountChange()">
+      <div class="form-inline">
+        <div class="input-group mb-2 mr-sm-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">복습일차</div>
+          </div>
+          <input type="numer" class="form-control" [(ngModel)]="reviewDayCount" (change)="onReviewDayCountChange()" >
+        </div>
+        <button class="btn btn-primary mb-2" (click)="roadCards()">카드 가져오기</button>
       </div>
-      <div class="col-6"></div>
-
-      <div class="form-group col-md-6 col-sm-6">
-        <!-- <label for="uiCardType">카드 종류</label> -->
+      <!-- <div class="form-group col-md-6 col-sm-6">
         <div class="input-group-prepend">
           <span class="input-group-text" id="">카드 종류</span>
           <div class="btn-group btn-group-toggle">
@@ -23,12 +27,8 @@
             </label>
           </div>
         </div>
-      </div>
-      <div class="col-12">
-        <button class="btn btn-primary" (click)="roadCards()">불러 오기</button>
-      </div>
+      </div> -->
     </div>
   </section>
-
   <card-decks [cardList]="cardList"></card-decks>
 </div>

@@ -4,6 +4,7 @@ import { NgModel } from '@angular/forms';
 
 import { CardInformation } from '../data-model/CardInformation';
 import DataService from '../common/dataService';
+import UserService from '../common/userService';
 
 @Component({
   selector: 'app-input-form',
@@ -20,8 +21,9 @@ export class InputFormComponent implements OnInit {
   
   ngOnInit() {}
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private userService: UserService) {
     this.cardInfo = new CardInformation();
+    this.cardInfo.referenceDayCount = this.userService.getReviewDayCount();
   }
 
   private clearUserInput() {
@@ -29,8 +31,9 @@ export class InputFormComponent implements OnInit {
     this.cardInfo.english = '';
   }
 
-  submitUserInput(cardInfo, element) {
+  submitUserInput(cardInfo: CardInformation, element) {
     console.log(cardInfo);
+    cardInfo.userId = this.userService.getUserId();
     this.dataService.addNewCard(cardInfo)
       .subscribe((data) => {
         console.log(data);

@@ -44,7 +44,7 @@ export class CardReviewComponent implements OnInit {
   }
 
   private roadCards() {
-    console.log('roadCards');
+    this.getCards();
   }
 
 }

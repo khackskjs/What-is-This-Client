@@ -1,8 +1,7 @@
+import { CardInformation } from './../data-model/CardInformation';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from "@angular/core";
 import * as _ from 'underscore';
-
-import { CardInformation } from "../data-model/CardInformation";
 
 const SERVER_URL = 'http://localhost:8000';
 
@@ -12,8 +11,13 @@ export default class DataService {
   }
 
   public addNewCard(cardInfo: CardInformation) {
-    console.log('addNewCard ', cardInfo);
     return this.http.post(`${SERVER_URL}/card`, cardInfo);
+  }
+
+  public updateCardReview(cardInfo: CardInformation) {
+    console.log('updateCard', cardInfo);
+    var object = { id: cardInfo.DBID, reviewResult: cardInfo.reviewResult };
+    return this.http.put(`${SERVER_URL}/card`, object);
   }
 
   /**
@@ -31,6 +35,5 @@ export default class DataService {
         });
         return cardList;
       });
-      // .subscribe(results => {console.log('getCards', results);});
   }
 }
