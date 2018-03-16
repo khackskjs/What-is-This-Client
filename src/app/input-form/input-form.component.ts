@@ -20,7 +20,6 @@ export class InputFormComponent implements OnInit {
   };
   
   ngOnInit() {}
-
   constructor(private dataService: DataService, private userService: UserService) {
     this.cardInfo = new CardInformation();
     this.cardInfo.nextReviewDayCount = this.cardInfo.referenceDayCount = this.userService.getReviewDayCount();
@@ -32,11 +31,12 @@ export class InputFormComponent implements OnInit {
   }
 
   submitUserInput(cardInfo: CardInformation, element) {
-    console.log(cardInfo);
-    cardInfo.userId = this.userService.getUserId();
+    let uid = cardInfo.userId = this.userService.getUserId();
+    if (!uid) {
+      return alert('add card after Login');
+    }
     this.dataService.addNewCard(cardInfo)
       .subscribe((data) => {
-        console.log(data);
         this.clearUserInput();
         element.focus();
       });
