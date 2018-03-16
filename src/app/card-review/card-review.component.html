@@ -8,10 +8,10 @@
           <div class="input-group-prepend">
             <div class="input-group-text">복습일차</div>
           </div>
-          <input type="numer" class="form-control" [(ngModel)]="reviewDayCount" (change)="onReviewDayCountChange()" >
+          <input type="numer" class="form-control" [(ngModel)]="reviewDayCount">
         </div>
-        <button class="btn btn-primary mb-2" (click)="roadCards()">카드 가져오기</button>
-        <button class="btn btn-success mb-2" (click)="updateAllCardReviewResult()">복습결과 갱신</button>
+        <button class="btn btn-primary mb-2" (click)="roadCards()" [disabled]="isUpdatingResult">카드 가져오기</button>
+        <button class="btn btn-success mb-2" (click)="updateAllCardReviewResult()" [disabled]="isUpdatingResult">복습결과 갱신</button>
       </div>
       <!-- <div class="form-group col-md-6 col-sm-6">
         <div class="input-group-prepend">

@@ -19,7 +19,6 @@ export enum KEY_CODE {
 export class CardDecksComponent implements OnInit {
   @Input() cardList: Array<CardInformation>;  
   currentCardIndex: number = 0;
-  // currentCard: CardInformation;
   showCard: Boolean = false;
   previousKey: KEY_CODE;
 
@@ -51,6 +50,7 @@ export class CardDecksComponent implements OnInit {
     event.stopImmediatePropagation();
   }
 
+  ngOnInit() {}
   constructor(private dataService: DataService, private userService: UserService) {}
 
   passCardReview() {
@@ -76,8 +76,6 @@ export class CardDecksComponent implements OnInit {
     this.currentCardIndex = this.cardList.length === 0 ? null : index;
   }
 
-  ngOnInit() {}
-
   reviewCard(badgeType) {
     let currentCard = this.getCurrentCard(),
         retVal = false;
@@ -90,7 +88,6 @@ export class CardDecksComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     if (!changes.cardList || this.cardList.length === 0)
       return;
-    console.log('Cards: ', this.cardList);
     this.setCurrentCardIndex(0);
   }
   private changeCardShowingStatust(status: Boolean) {
@@ -105,10 +102,7 @@ export class CardDecksComponent implements OnInit {
     this.showCard = false;
   }
   private updateCardReview() {
-    this.dataService.updateCardReview(this.getCurrentCard())
-      .subscribe(result => {
-        console.log(result);
-      });
+    this.dataService.updateCardReview(this.getCurrentCard()).subscribe();
   }
   /**
    * 최초 카드가 아닐 경우, 다음 카드를 보여준다.
