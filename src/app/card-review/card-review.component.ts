@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { CardInformation } from '../data-model/CardInformation';
 import DataService from '../common/dataService';
 import UserService from '../common/userService';
+import UserInformation from '../data-model/UserInformation';
 
 @Component({
   selector: 'app-card-review',
@@ -43,6 +44,13 @@ export class CardReviewComponent implements OnInit {
     console.log(this.reviewDayCount)
   }
 
+  updateAllCardReviewResult() {
+    var userInfo: UserInformation = new UserInformation();
+    userInfo.userId = this.userService.getUserId();
+    userInfo.reviewDayCount = this.userService.getReviewDayCount();
+    this.dataService.requestUpdatingAllCardReviewResult(userInfo)
+      .subscribe(data => console.log(data));
+  }
   private roadCards() {
     this.getCards();
   }

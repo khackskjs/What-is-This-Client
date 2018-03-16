@@ -62,7 +62,7 @@ export class CardDecksComponent implements OnInit {
   failCardReview() {
     this.changeCardShowingStatust(true);
     let currentCard = this.getCurrentCard();
-    currentCard.reviewResult = this.userService.getReviewDayCount();
+    currentCard.reviewResult = REVIEW_RESULT.FAIL;
     this.updateCardReview();
   }
   /**
@@ -84,7 +84,7 @@ export class CardDecksComponent implements OnInit {
     let revRes = currentCard.reviewResult;
 
     retVal =  badgeType === 'pass' && currentCard.reviewResult === REVIEW_RESULT.PASS ? true :
-              badgeType === 'fail' && currentCard.reviewResult > REVIEW_RESULT.PASS ? true : false;
+              badgeType === 'fail' && currentCard.reviewResult === REVIEW_RESULT.FAIL ? true : false;
     return retVal;
   }
   ngOnChanges(changes: SimpleChanges) {

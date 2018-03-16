@@ -2,6 +2,7 @@ import { CardInformation } from './../data-model/CardInformation';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from "@angular/core";
 import * as _ from 'underscore';
+import UserInformation from '../data-model/UserInformation';
 
 const SERVER_URL = 'http://localhost:8000';
 
@@ -18,6 +19,9 @@ export default class DataService {
     console.log('updateCard', cardInfo);
     var object = { id: cardInfo.DBID, reviewResult: cardInfo.reviewResult };
     return this.http.put(`${SERVER_URL}/card`, object);
+  }
+  public requestUpdatingAllCardReviewResult(userInfo: UserInformation) {
+    return this.http.post(`${SERVER_URL}/card/update`, userInfo);
   }
 
   /**

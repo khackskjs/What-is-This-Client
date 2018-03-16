@@ -30,7 +30,7 @@ export class UserInfoComponent implements OnInit {
     let form = formValue.value,
         userInfo = new UserInformation();
 
-    [userInfo.userId, userInfo.userPw] = [form.userId, form.userPw];
+    [userInfo.userId, userInfo.userPw, userInfo.lastLoginDatetime] = [form.userId, form.userPw, new Date()];
 
     this.userService.login(userInfo)
       .subscribe((userInfo: UserInformation) => {

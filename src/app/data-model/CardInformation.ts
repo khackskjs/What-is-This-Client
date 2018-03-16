@@ -8,7 +8,8 @@ export enum CARD_COLOR {
 
 export enum REVIEW_RESULT {
   NONE = -1,
-  PASS = 0,
+  FAIL = 0,
+  PASS = 1,
 }
 
 export class CardInformation {
