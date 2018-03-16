@@ -23,7 +23,7 @@ export class InputFormComponent implements OnInit {
 
   constructor(private dataService: DataService, private userService: UserService) {
     this.cardInfo = new CardInformation();
-    this.cardInfo.referenceDayCount = this.userService.getReviewDayCount();
+    this.cardInfo.nextReviewDayCount = this.cardInfo.referenceDayCount = this.userService.getReviewDayCount();
   }
 
   private clearUserInput() {

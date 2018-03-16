@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, SimpleChanges, HostListener } from '@angular/core';
 import { CardInformation, CARD_COLOR, REVIEW_RESULT } from '../../data-model/CardInformation';
 import DataService from '../../common/dataService';
+import UserService from '../../common/userService';
 
 export enum KEY_CODE {
   SPACE_BAR = 32,
@@ -50,6 +51,8 @@ export class CardDecksComponent implements OnInit {
     event.stopImmediatePropagation();
   }
 
+  constructor(private dataService: DataService, private userService: UserService) {}
+
   passCardReview() {
     this.changeCardShowingStatust(true);
     let currentCard = this.getCurrentCard();
@@ -59,7 +62,7 @@ export class CardDecksComponent implements OnInit {
   failCardReview() {
     this.changeCardShowingStatust(true);
     let currentCard = this.getCurrentCard();
-    currentCard.reviewResult = REVIEW_RESULT.FAIL;
+    currentCard.reviewResult = this.userService.getReviewDayCount();
     this.updateCardReview();
   }
   /**
@@ -68,8 +71,6 @@ export class CardDecksComponent implements OnInit {
   showFrontCard() {
     this.changeCardShowingStatust(false);
   }
-
-  constructor(private dataService: DataService) {}
 
   setCurrentCardIndex(index: number) {
     this.currentCardIndex = this.cardList.length === 0 ? null : index;
@@ -83,7 +84,7 @@ export class CardDecksComponent implements OnInit {
     let revRes = currentCard.reviewResult;
 
     retVal =  badgeType === 'pass' && currentCard.reviewResult === REVIEW_RESULT.PASS ? true :
-              badgeType === 'fail' && currentCard.reviewResult === REVIEW_RESULT.FAIL ? true : false;
+              badgeType === 'fail' && currentCard.reviewResult > REVIEW_RESULT.PASS ? true : false;
     return retVal;
   }
   ngOnChanges(changes: SimpleChanges) {

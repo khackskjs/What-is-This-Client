@@ -7,9 +7,8 @@ export enum CARD_COLOR {
 }
 
 export enum REVIEW_RESULT {
-  NONE = 0,
-  PASS,
-  FAIL,
+  NONE = -1,
+  PASS = 0,
 }
 
 export class CardInformation {
@@ -25,7 +24,7 @@ export class CardInformation {
   private id:               number;       // primary key of card TBL of DB
   
   /** For review */
-  public reviewResult:      REVIEW_RESULT;// 당일에 복습 결과, 유저가 수동으로 업데이트 하지 않으면, 일자 변경될때 Server가 자동으로 업데이트 할 것
+  public reviewResult:      REVIEW_RESULT | Number;// 당일 복습 결과. 유저가 수동으로 업데이트 하지 않으면, 일자 변경될때 Server가 자동으로 업데이트 할 것. fail일 경우 user.reviewDayCount 를 가지게 됨.
   public referenceDayCount: Number;       // 해당 숫자를 기준으로, level을 고려해서 다음복습일자(nextReviewDayCount)를 계산하면 됨 ex: 카드 등록 or 복습 실패 시, UserInformation.reviewDayCount 값을 가짐
   public nextReviewDayCount:Number;       // 다음번 복습 예정 일차. nextReviewDayCount <= UserInformation.reviewDayCount 경우, 복습하게 됨
 
