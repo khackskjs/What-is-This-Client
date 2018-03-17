@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges, HostListener } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, HostListener, Inject } from '@angular/core';
 import { CardInformation, CARD_COLOR, REVIEW_RESULT } from '../../data-model/CardInformation';
 import DataService from '../../common/dataService';
 import UserService from '../../common/userService';
@@ -16,12 +16,12 @@ export enum KEY_CODE {
   templateUrl: './card-decks.component.html',
   styleUrls: ['./card-decks.component.css']
 })
-export class CardDecksComponent implements OnInit {
+export class CardDecksComponent {
   @Input() cardList: Array<CardInformation>;  
   currentCardIndex: number = 0;
   showCard: Boolean = false;
   previousKey: KEY_CODE;
-
+  
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
     // console.log(event.keyCode);
@@ -50,7 +50,6 @@ export class CardDecksComponent implements OnInit {
     event.stopImmediatePropagation();
   }
 
-  ngOnInit() {}
   constructor(private dataService: DataService, private userService: UserService) {}
 
   passCardReview() {
