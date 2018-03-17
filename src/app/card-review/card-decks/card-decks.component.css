@@ -16,13 +16,14 @@
 
 .flip .flipped-card.flipped {
   -webkit-transform: rotatex(-180deg);
+  -webkit-transition: 0.5s;
 }
 
 .flip .flipped-card {
   width: 100%;
   height: 100%;
   -webkit-transform-style: preserve-3d;
-  -webkit-transition: 0.5s;
+  -webkit-transition: 0.1s;
 }
 
 .flip .flipped-card .face {
