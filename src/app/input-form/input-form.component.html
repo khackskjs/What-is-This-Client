@@ -27,7 +27,8 @@
                 name="ciDayOfStudy"
                 class="form-control"
                 [(ngModel)]="cardInfo.dayOfStudy"
-                min=1>
+                min=1
+                tabindex="4">
       </div>
       <!-- <div class="form-group col-md-6 col-sm-6">
         <label for="ciCardLevel">카드 레벨</label>
@@ -45,7 +46,8 @@
                 name="ciReviewDates"
                 [(ngModel)]="cardInfo.reviewDates"
                 (blur)="onReviewDatesChange($event, cardInfo.reviewDates)"
-                class="form-control">
+                class="form-control"
+                tabindex="-1">
       </div>
       <!-- <div class="form-group col-md-6 col-sm-6">
         <label for="ciCardType">카드 종류</label>
@@ -64,7 +66,8 @@
 
       <div class="form-group col-md-12 col-sm-12">
         <label for="ciGenDate">카드 생성일</label>
-        <input  id="ciGenDate"
+        <input  disabled
+                id="ciGenDate"
                 type="datetime-local"
                 name="ciGenDate"
                 [ngModel]="cardInfo.genDate | date:'yyyy-MM-ddTHH:mm:ss'"
