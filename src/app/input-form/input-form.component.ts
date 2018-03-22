@@ -38,6 +38,7 @@ export class InputFormComponent implements OnInit {
     this.dataService.addNewCard(cardInfo)
       .subscribe((data) => {
         this.clearUserInput();
+        this.cardInfo.genDate = new Date();
         element.focus();
       });
   }
