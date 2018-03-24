@@ -8,11 +8,20 @@
           </div>
           <input type="numer" class="form-control" [(ngModel)]="reviewDayCount">
         </div>
-        <button class="btn btn-primary mb-2" (click)="roadCards()" [disabled]="isUpdatingResult">카드 가져오기</button>
-        <button class="btn btn-success mb-2" (click)="suffleCards()" [disabled]="isUpdatingResult">카드 섞기</button>
-        <button class="btn btn-success mb-2" (click)="updateAllCardReviewResult()" [disabled]="isUpdatingResult">복습결과 갱신</button>
+        <button #bRoadCards
+                class="btn btn-primary mb-2"
+                (click)="roadCards(); bRoadCards();"
+                [disabled]="isUpdatingResult">카드 가져오기</button>
+        <button #bSuffle
+                class="btn btn-light"
+                (click)="suffleCards(); bSuffle.blur(); cardDecks.setCurrentCardIndex(0);"
+                [disabled]="isUpdatingResult">카드 섞기</button>
+        <button #bRenew
+                class="btn btn-success mb-2"
+                (click)="updateAllCardReviewResult(); bRenew.blur();"
+                [disabled]="isUpdatingResult">복습결과 갱신</button>
       </div>
     </div>
   </section>
-  <card-decks [cardList]="cardList"></card-decks>
+  <card-decks #cardDecks [cardList]="cardList"></card-decks>
 </div>
