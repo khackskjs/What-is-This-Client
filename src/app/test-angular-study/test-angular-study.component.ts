@@ -16,12 +16,7 @@ import { GoogleApiService } from 'ng-gapi';
 })
 export class TestAngularStudyComponent implements OnInit {
   constructor(private gapiService: GoogleApiService, private gUserService: GoogleUserService) {
-    this.gapiService.onLoad().subscribe((data)=> {
-      // Here we can use gapi
-      console.log('onLoad', data);
-      
-    });
-    
+    console.log('is Login: ', gUserService.isUserSignedIn())
   }
   
   ngOnInit() {

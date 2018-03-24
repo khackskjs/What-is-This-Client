@@ -42,6 +42,10 @@ export class CardReviewComponent implements OnInit {
       });
   }
 
+  suffleCards() {
+    this.shuffle(this.cardList);
+  }
+
   private roadCards() {
     let reqParams = this.makeRequest();
     this.dataService.getCards(reqParams)
@@ -55,5 +59,16 @@ export class CardReviewComponent implements OnInit {
   }
   private enableUI() {
     this.isUpdatingResult = false;
+  }
+
+  /**
+   * @param {Array} a
+   */
+  private shuffle(a) {
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
   }
 }

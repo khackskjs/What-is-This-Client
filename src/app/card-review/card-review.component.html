@@ -1,5 +1,3 @@
-
-  
 <div class="container">
   <section>
     <div class="form-row">
@@ -11,24 +9,9 @@
           <input type="numer" class="form-control" [(ngModel)]="reviewDayCount">
         </div>
         <button class="btn btn-primary mb-2" (click)="roadCards()" [disabled]="isUpdatingResult">카드 가져오기</button>
+        <button class="btn btn-success mb-2" (click)="suffleCards()" [disabled]="isUpdatingResult">카드 섞기</button>
         <button class="btn btn-success mb-2" (click)="updateAllCardReviewResult()" [disabled]="isUpdatingResult">복습결과 갱신</button>
       </div>
-      <!-- <div class="form-group col-md-6 col-sm-6">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="">카드 종류</span>
-          <div class="btn-group btn-group-toggle">
-            <label class="btn-primary" ngbButtonLabel>
-              <input type="checkbox" ngbButton [(ngModel)]="cardType[0]" [ngModelOptions]="{standalone: true}"> Sentence
-            </label>
-            <label class="btn-primary" ngbButtonLabel>
-              <input type="checkbox" ngbButton [(ngModel)]="cardType[1]" [ngModelOptions]="{standalone: true}"> Phrasal Verb
-            </label>
-            <label class="btn-primary" ngbButtonLabel>
-              <input type="checkbox" ngbButton [(ngModel)]="cardType[2]" [ngModelOptions]="{standalone: true}"> Expression
-            </label>
-          </div>
-        </div>
-      </div> -->
     </div>
   </section>
   <card-decks [cardList]="cardList"></card-decks>
