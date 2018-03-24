@@ -1,5 +1,5 @@
 <section class="container">
-  <form (ngSubmit)="submitUserInput(cardInfo, userInfoFront)">
+  <form>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="ciKorean">앞면 (한국어)</label>
@@ -48,25 +48,7 @@
                 (blur)="onReviewDatesChange($event, cardInfo.reviewDates)"
                 class="form-control"
                 tabindex="-1">
-      </div>
-      <!-- <div class="form-group col-md-6 col-sm-6">
-        <label for="ciCardType">카드 종류</label>
-        <div class="btn-group btn-group-toggle">
-          <label class="btn-primary" ngbButtonLabel>
-            <input type="checkbox" ngbButton [(ngModel)]="cardType[0]" [ngModelOptions]="{standalone: true}"> Sentence
-          </label>
-          <label class="btn-primary" ngbButtonLabel>
-            <input type="checkbox" ngbButton [(ngModel)]="cardType[1]" [ngModelOptions]="{standalone: true}"> Phrasal Verb
-          </label>
-          <label class="btn-primary" ngbButtonLabel>
-            <input type="checkbox" ngbButton [(ngModel)]="cardType[2]" [ngModelOptions]="{standalone: true}"> Expression
-          </label>
-        </div>
-      </div> -->
-
-      
-      
-
+      </div>      
       <div class="form-group col-sm-12 col-md-6">
         <label for="ciGenDate">카드 종류</label>
         <div class="input-group">
@@ -79,7 +61,6 @@
           <input class="form-control" readonly tabindex="-1" [ngModel]="cardTypeString" [ngModelOptions]="{standalone: true}">
         </div>
       </div>
-
       <div class="form-group col-sm-12 col-md-6">
         <label for="ciGenDate">카드 생성일</label>
         <input  disabled
@@ -91,7 +72,7 @@
                 class="form-control">
       </div>
       <div class="col-auto">
-        <button type="submit" class="btn btn-primary" tabindex="3">Submit</button>
+        <button type="submit" class="btn btn-primary" (click)="submitUserInput(cardInfo, userInfoFront)" tabindex="3">Submit</button>
       </div>
     </div> <!-- ./form-row -->
   </form>

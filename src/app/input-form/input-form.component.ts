@@ -43,7 +43,6 @@ export class InputFormComponent implements OnInit {
       return;
       // return alert('add card after Login');
     }
-    console.log(cardInfo);
     this.dataService.addNewCard(cardInfo)
       .subscribe((data) => {
         this.clearUserInput();
@@ -63,6 +62,7 @@ export class InputFormComponent implements OnInit {
   private selectCardType(idx) {
     this.cardTypes[idx] = !this.cardTypes[idx];
     this.cardTypeString = this.cardTypeNameList.filter((val, idx) => this.cardTypes[idx]).join(', ');// toString();
-    this.ct ^= 1 << idx;
+    this.cardInfo.cardType ^= 1 << idx;
+    console.log('this.cardInfo.cardType', this.cardInfo.cardType)
   }
 }
