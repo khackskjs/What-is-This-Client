@@ -27,6 +27,15 @@ export default class UserService {
     return this._userInfo.reviewDayCount;
   }
 
+  public getCardTypes() {
+    return ['Sentence','expression','phrasal verb'];
+    // return {
+    //   '0': 'Sentence',
+    //   '1': 'expression',
+    //   '2': 'phrasal verb'
+    // }
+  }
+
   public login(userInfo: UserInformation) {
     return this.http.post(`${SERVER_URL}/user/login`, userInfo)
       .map((user: UserInformation) => {
