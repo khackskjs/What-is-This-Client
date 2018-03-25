@@ -20,7 +20,7 @@ export class CardInformation {
   public genDate:           Date;         // 카드 생성일
   // public reviewDates:       Array<Number>;  // 몇일 몇일째에 리뷰 하고 싶은지 변경 가능하기 위해. to Be
   public reviewDates:       String;       // 몇일 몇일째에 리뷰 하고 싶은지 변경 가능하기 위해. to Be
-  public cardType:          Number;       // bitwise 연산시 나오는 값으로 연산, 1: MAIN_SENTENCE / 2: EXPRESSION / 4: PHRASAL_VERB
+  public cardType:          number;       // bitwise 연산시 나오는 값으로 연산, 1: MAIN_SENTENCE / 2: EXPRESSION / 4: PHRASAL_VERB
   public userId:            String;
   private id:               number;       // primary key of card TBL of DB
   
@@ -40,7 +40,6 @@ export class CardInformation {
     this.cardLevel = 1;
     this.genDate = new Date();
     this.reviewDates = [1,2,4,8,16,32,64].join(',');
-    this.cardType = 1;  // MAIN_SENTENCE
     this.reviewResult = REVIEW_RESULT.NONE;
     // this.referenceDayCount = 1;   // 1을 설정하게 되면, 무조건 review 를 시작하고, 실패시 재등록을 하게 됨
   }

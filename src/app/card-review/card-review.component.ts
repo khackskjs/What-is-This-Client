@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { CardInformation } from '../data-model/CardInformation';
+import { CardInformation, REVIEW_RESULT } from '../data-model/CardInformation';
 import DataService from '../common/dataService';
 import UserService from '../common/userService';
 import UserInformation from '../data-model/UserInformation';
@@ -43,14 +43,14 @@ export class CardReviewComponent implements OnInit {
   }
 
   suffleCards() {
-    this.shuffle(this.cardList);
+    this.cardList = this.arrangeNonReviewCardsFirst(this.shuffle(this.cardList));
   }
 
   private roadCards() {
     let reqParams = this.makeRequest();
     this.dataService.getCards(reqParams)
-      .subscribe(cardList => {
-        this.cardList = cardList;
+      .subscribe((cardList: Array<CardInformation>) => {
+        this.cardList = this.arrangeNonReviewCardsFirst(cardList);
         this.enableUI();
       });
   }
@@ -60,7 +60,16 @@ export class CardReviewComponent implements OnInit {
   private enableUI() {
     this.isUpdatingResult = false;
   }
-
+  /**
+   * 복습 안한 카드를 앞쪽으로 배치
+   * @param {Array<CardInformation>} cardList 
+   */
+  private arrangeNonReviewCardsFirst(cardList: Array<CardInformation>): Array<CardInformation> {
+    let nonReviewCardList = cardList.filter(card => card.reviewResult === REVIEW_RESULT.NONE),
+        reviewedCardList = cardList.filter(card => card.reviewResult !== REVIEW_RESULT.NONE);
+    
+    return nonReviewCardList.concat(reviewedCardList);
+  }
   /**
    * @param {Array} a
    */
