@@ -9,15 +9,15 @@
           <input type="numer" class="form-control" [(ngModel)]="reviewDayCount">
         </div>
         <button #bRoadCards
-                class="btn btn-primary mb-2"
+                class="btn btn-outline-primary mb-2"
                 (click)="roadCards(); bRoadCards();"
                 [disabled]="isUpdatingResult">카드 가져오기</button>
         <button #bSuffle
-                class="btn btn-light"
+                class="btn btn-outline-secondary mb-2"
                 (click)="suffleCards(); bSuffle.blur(); cardDecks.setCurrentCardIndex(0);"
                 [disabled]="isUpdatingResult">카드 섞기</button>
         <button #bRenew
-                class="btn btn-success mb-2"
+                class="btn btn-outline-success mb-2"
                 (click)="updateAllCardReviewResult(); bRenew.blur();"
                 [disabled]="isUpdatingResult">복습결과 갱신</button>
       </div>
