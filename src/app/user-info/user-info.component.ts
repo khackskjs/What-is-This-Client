@@ -1,6 +1,6 @@
+import { GoogleUserService } from './../common/gUserService';
 import { Component, OnInit } from '@angular/core';
 import UserInformation from '../data-model/UserInformation';
-import UserService from '../common/userService';
 
 @Component({
   selector: 'app-user-info',
@@ -15,27 +15,15 @@ import UserService from '../common/userService';
   templateUrl: './user-info.component.html'
 })
 export class UserInfoComponent implements OnInit {
+  oauthInfo = {};
   userInfo: UserInformation;
-  // userId: String;
-  reviewDayCount: Number;
 
-  constructor(private userService: UserService) {
+  constructor(private gUserService: GoogleUserService) {
     this.userInfo = new UserInformation();
+    this.oauthInfo = gUserService.getUserInfo();
+    console.log(this.oauthInfo)
   }
 
   ngOnInit() {
-  }
-  
-  login(formValue) {
-    let form = formValue.value,
-        userInfo = new UserInformation();
-
-    [userInfo.userId, userInfo.userPw, userInfo.lastLoginDatetime] = [form.userId, form.userPw, new Date()];
-
-    this.userService.login(userInfo)
-      .subscribe((userInfo: UserInformation) => {
-        this.userInfo = userInfo;
-        this.reviewDayCount = userInfo.reviewDayCount;
-      });
   }
 }

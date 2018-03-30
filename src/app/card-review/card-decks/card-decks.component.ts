@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, SimpleChanges, HostListener, Inject } from '@angular/core';
 import { CardInformation, CARD_COLOR, REVIEW_RESULT } from '../../data-model/CardInformation';
 import DataService from '../../common/dataService';
-import UserService from '../../common/userService';
 
 export enum KEY_CODE {
   SPACE_BAR = 32,
@@ -50,7 +49,7 @@ export class CardDecksComponent {
     event.stopImmediatePropagation();
   }
 
-  constructor(private dataService: DataService, private userService: UserService) {}
+  constructor(private dataService: DataService) {}
 
   passCardReview() {
     this.changeCardShowingStatust(true);

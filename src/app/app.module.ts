@@ -13,7 +13,6 @@ import { CardReviewComponent } from './card-review/card-review.component';
 import { TestAngularStudyComponent } from './test-angular-study/test-angular-study.component';
 import { clock } from './common/reducers';
 import { UserInfoComponent } from './user-info/user-info.component';
-import UserService from './common/userService';
 
 import { GoogleApiModule, GoogleApiService, GoogleAuthService, NgGapiClientConfig, NG_GAPI_CONFIG, GoogleApiConfig } from "ng-gapi";
 import { GoogleUserService } from './common/gUserService';
@@ -23,8 +22,7 @@ let gapiClientConfig: NgGapiClientConfig = {
   client_id: "",
   discoveryDocs: ["https://analyticsreporting.googleapis.com/$discovery/rest?version=v4"],
   scope: [
-      "https://www.googleapis.com/auth/analytics.readonly",
-      "https://www.googleapis.com/auth/analytics"
+      "https://www.googleapis.com/auth/analytics.readonly"
   ].join(" ")
 };
 
@@ -49,7 +47,7 @@ let gapiClientConfig: NgGapiClientConfig = {
     ReactiveFormsModule,
     StoreModule.forRoot({ reducer: clock })
   ],
-  providers: [DataService, UserService, GoogleUserService],
+  providers: [DataService, GoogleUserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

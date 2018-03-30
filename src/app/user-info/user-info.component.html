@@ -1,17 +1,17 @@
 <section class="container">
-  <form (ngSubmit)="login(formRef)" #formRef="ngForm">
+  <form #formRef="ngForm">
       <div class="form-row">
         <div class="form-group col-6">
           <label for="userId">ID</label>
-          <input [(ngModel)]="userInfo.userId" id="userId" type="text" name="userId" class="form-control" minlength="3" tabindex="1" required autofocus>
+          <input [(ngModel)]="oauthInfo.email" id="userId" type="text" name="userId" class="form-control" minlength="3" tabindex="1" required autofocus>
         </div>
         <div class="form-group col-6">
-          <label for="userPw">PW</label>
-          <input [(ngModel)]="userInfo.userPw" id="userPw" type="password" name="userPw" class="form-control" tabindex="2" required>
+          <label for="userName">이름</label>
+          <input [(ngModel)]="oauthInfo.givenName" id="userName" type="text" name="userName" class="form-control" tabindex="2" required>
         </div>
         <div class="form-group col-md-6 col-sm-6">
           <label for="reviewDayCount">복습 일차</label>
-          <input [(ngModel)]="reviewDayCount" id="reviewDayCount" type="number" name="reviewDayCount" class="form-control" disabled>
+          <input [(ngModel)]="oauthInfo.reviewDayCount" id="reviewDayCount" type="number" name="reviewDayCount" class="form-control" disabled>
         </div>
       </div>
       <button type="submit" class="btn btn-primary" tabindex="3" [disabled]="!formRef.valid" tabindex="3">Submit</button>

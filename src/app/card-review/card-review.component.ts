@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { CardInformation, REVIEW_RESULT } from '../data-model/CardInformation';
 import DataService from '../common/dataService';
-import UserService from '../common/userService';
+import { GoogleUserService } from './../common/gUserService';
 import UserInformation from '../data-model/UserInformation';
 
 @Component({
@@ -18,14 +18,14 @@ export class CardReviewComponent implements OnInit {
   isUpdatingResult: Boolean = false;    // server 와 통신간에 UI 막고, 풀기 위함
 
   ngOnInit() {}
-  constructor(private dataService:DataService, private userService: UserService) {
-    this.reviewDayCount = this.userService.getReviewDayCount();
+  constructor(private dataService:DataService, private gUserService: GoogleUserService) {
+    this.reviewDayCount = this.gUserService.getReviewDayCount();
     this.cardList = new Array<CardInformation>();
     this.roadCards();
   }
 
   makeRequest() {
-    let userId: String = this.userService.getUserId();
+    let userId: String = this.gUserService.getUserEmail();
     let reviewDayCount = this.reviewDayCount;
     return { userId, reviewDayCount };
   }
@@ -33,8 +33,8 @@ export class CardReviewComponent implements OnInit {
   updateAllCardReviewResult() {
     this.disableUI();
     var userInfo: UserInformation = new UserInformation();
-    userInfo.userId = this.userService.getUserId();
-    userInfo.reviewDayCount = this.reviewDayCount || this.userService.getReviewDayCount();
+    userInfo.userId = this.gUserService.getUserEmail();
+    userInfo.reviewDayCount = this.reviewDayCount || this.gUserService.getReviewDayCount();
 
     this.dataService.requestUpdatingAllCardReviewResult(userInfo)
       .subscribe(data => {

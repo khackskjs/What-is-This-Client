@@ -16,7 +16,12 @@ import { GoogleApiService } from 'ng-gapi';
 })
 export class TestAngularStudyComponent implements OnInit {
   constructor(private gapiService: GoogleApiService, private gUserService: GoogleUserService) {
-    console.log('is Login: ', gUserService.isUserSignedIn())
+    if (gUserService.isUserSignedIn()) {
+      gUserService.renewUserInfo();
+    }
+    else {
+      console.error(`Login 페이지로 이동 해야 함`);
+    }
   }
   
   ngOnInit() {

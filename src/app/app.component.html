@@ -2,22 +2,22 @@
     {{ title }}!
 </div>
 
-<ngb-tabset justify="center" activeId="tab3">
-  <ngb-tab id="tab1">
+<ngb-tabset justify="center" activeId="tab1">
+  <ngb-tab id="tab1" tabindex="5">
     <ng-template ngbTabTitle>
       <b>카드</b> 작성/수정</ng-template>
     <ng-template ngbTabContent>
       <app-input-form></app-input-form>
     </ng-template>
   </ngb-tab>
-  <ngb-tab id="tab2">
+  <ngb-tab id="tab2" tabindex="7">
     <ng-template ngbTabTitle>
       <b>카드</b> 복습</ng-template>
     <ng-template ngbTabContent>
       <app-card-review></app-card-review>
     </ng-template>
   </ngb-tab>
-  <ngb-tab title="reserved(Test)" id="tab3">
+  <ngb-tab title="reserved(Test)" id="tab3" tabindex="6">
     <ng-template ngbTabContent>
       <app-user-info></app-user-info>
       <app-test-angular-study></app-test-angular-study>      
