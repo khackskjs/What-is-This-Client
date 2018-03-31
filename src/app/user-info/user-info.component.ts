@@ -15,12 +15,14 @@ import UserInformation from '../data-model/UserInformation';
   templateUrl: './user-info.component.html'
 })
 export class UserInfoComponent implements OnInit {
-  oauthInfo = {};
+  userFullname = '';
+  oauthInfo: any = {};
   userInfo: UserInformation;
 
   constructor(private gUserService: GoogleUserService) {
     this.userInfo = new UserInformation();
     this.oauthInfo = gUserService.getUserInfo();
+    this.userFullname = `${this.oauthInfo.givenName} ${this.oauthInfo.familyName}`;
     console.log(this.oauthInfo)
   }
 

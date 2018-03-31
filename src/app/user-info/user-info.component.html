@@ -2,18 +2,17 @@
   <form #formRef="ngForm">
       <div class="form-row">
         <div class="form-group col-6">
-          <label for="userId">ID</label>
+          <label for="userId">ID(email)</label>
           <input [(ngModel)]="oauthInfo.email" id="userId" type="text" name="userId" class="form-control" minlength="3" tabindex="1" required autofocus>
         </div>
         <div class="form-group col-6">
-          <label for="userName">이름</label>
-          <input [(ngModel)]="oauthInfo.givenName" id="userName" type="text" name="userName" class="form-control" tabindex="2" required>
-        </div>
-        <div class="form-group col-md-6 col-sm-6">
           <label for="reviewDayCount">복습 일차</label>
           <input [(ngModel)]="oauthInfo.reviewDayCount" id="reviewDayCount" type="number" name="reviewDayCount" class="form-control" disabled>
         </div>
+        <div class="form-group col-12">
+          <label for="userName">Full name</label>
+          <input [(ngModel)]="userFullname" id="userName" type="text" name="userName" class="form-control" tabindex="2" required>
+        </div>
       </div>
-      <button type="submit" class="btn btn-primary" tabindex="3" [disabled]="!formRef.valid" tabindex="3">Submit</button>
     </form>
 </section>
