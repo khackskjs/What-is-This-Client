@@ -1,7 +1,10 @@
 <div class="input-group">
-  <div class="input-group-prepend" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+  <div class="input-group-prepend" autoClose="outside" ngbDropdown role="group" aria-label="Button group with nested dropdown">
     <button class="btn btn-outline-primary" ngbDropdownToggle tabindex="5">{{buttonTitle}}</button>
     <div class="dropdown-menu" ngbDropdownMenu>
+      <button class="dropdown-item" [ngClass]="{'active': cardType === cardTypeAll}" (click)="selectCardType(ALL)">ALL</button>
+      <button class="dropdown-item" [ngClass]="{'active': cardType === cardTypeEmpty}" (click)="selectCardType(EMPTY)">EMPTY</button>
+      <div class="dropdown-divider"></div>
       <button class="dropdown-item" [ngClass]="{'active': cardTypes[idx]}" *ngFor="let cardType of cardTypeNameList; let idx = index" (click)="selectCardType(idx)">{{ cardType }}</button>
     </div>
   </div>

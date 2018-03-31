@@ -14,7 +14,7 @@ import { NgbDropdownToggle } from '@ng-bootstrap/ng-bootstrap/dropdown/dropdown'
 })
 export class InputFormComponent implements OnInit {
   cardInfo: CardInformation;
-  cardTypes: Array<boolean> = [];  // 나중에 각 자리를 리용해서 bitwise 연산해서, cardInfo.cardType 에 대응할 것
+  // cardTypes: Array<boolean> = [];  // 나중에 각 자리를 리용해서 bitwise 연산해서, cardInfo.cardType 에 대응할 것
   cardTypeNameList: Array<string>; // user가 지정한 card 종류 이름
   cardTypeString: string;
   
@@ -26,7 +26,7 @@ export class InputFormComponent implements OnInit {
     this.cardInfo = new CardInformation();
     this.cardInfo.nextReviewDayCount = this.cardInfo.referenceDayCount = this.gUserService.getReviewDayCount();
     this.cardTypeNameList = this.gUserService.getCardTypes();
-    this.cardTypeNameList.forEach(t => this.cardTypes.push(false));
+    // this.cardTypeNameList.forEach(t => this.cardTypes.push(false));
   }
 
   private clearUserInput() {
