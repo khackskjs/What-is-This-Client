@@ -41,8 +41,8 @@ export class CardTypeDropdownComponent implements OnInit {
       this.cardTypes[idx] = !this.cardTypes[idx];
       this.cardType ^= 1 << idx;
     }
-    this.cardTypeString = this.cardTypeNameList.filter((val, idx) => this.cardTypes[idx]).join(', ');
+
+    this.cardTypeString = this.cardType === this.cardTypeAll ? 'ALL' : this.cardTypeNameList.filter((val, idx) => this.cardTypes[idx]).join(', ');
     this.cardTypeChange.emit(this.cardType);
-    console.log(this.cardTypes)
   }
 }
