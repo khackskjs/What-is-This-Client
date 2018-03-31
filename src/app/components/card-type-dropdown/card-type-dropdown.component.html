@@ -1,0 +1,9 @@
+<div class="input-group">
+  <div class="input-group-prepend" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+    <button class="btn btn-outline-primary" ngbDropdownToggle tabindex="5">{{buttonTitle}}</button>
+    <div class="dropdown-menu" ngbDropdownMenu>
+      <button class="dropdown-item" [ngClass]="{'active': cardTypes[idx]}" *ngFor="let cardType of cardTypeNameList; let idx = index" (click)="selectCardType(idx)">{{ cardType }}</button>
+    </div>
+  </div>
+  <input class="form-control" readonly tabindex="-1" [ngModel]="cardTypeString" [ngModelOptions]="{standalone: true}">
+</div>

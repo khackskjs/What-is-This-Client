@@ -1,5 +1,5 @@
+import { Component, OnInit, Output, Input, ViewEncapsulation, ChangeDetectorRef } from '@angular/core';
 import { GoogleUserService } from './../common/gUserService';
-import { Component, OnInit, Output, Input, ViewEncapsulation } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModel } from '@angular/forms';
 
@@ -19,15 +19,15 @@ export class InputFormComponent implements OnInit {
   cardTypeString: string;
   
   ngOnInit() {}
-  constructor(private dataService: DataService, private gUserService: GoogleUserService) {
+  // child 에서 값을 변경한 다음에 CD 해줘야 함
+  ngAfterViewChecked() { this.cdRef.detectChanges(); }
+
+  constructor(private dataService: DataService, private gUserService: GoogleUserService, private cdRef: ChangeDetectorRef) {
     this.cardInfo = new CardInformation();
     this.cardInfo.nextReviewDayCount = this.cardInfo.referenceDayCount = this.gUserService.getReviewDayCount();
     this.cardTypeNameList = this.gUserService.getCardTypes();
     this.cardTypeNameList.forEach(t => this.cardTypes.push(false));
-    this.selectCardType(0);
   }
-
-
 
   private clearUserInput() {
     this.cardInfo.korean = '';
@@ -53,12 +53,5 @@ export class InputFormComponent implements OnInit {
   }
   onReviewDatesChange(event, dates) {
     this.cardInfo.setReviewDates(dates);
-  }
-
-  ct = 0;
-  private selectCardType(idx) {
-    this.cardTypes[idx] = !this.cardTypes[idx];
-    this.cardTypeString = this.cardTypeNameList.filter((val, idx) => this.cardTypes[idx]).join(', ');// toString();
-    this.cardInfo.cardType ^= 1 << idx;
   }
 }

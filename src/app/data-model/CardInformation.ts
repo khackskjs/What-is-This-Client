@@ -41,6 +41,7 @@ export class CardInformation {
     this.genDate = new Date();
     this.reviewDates = [1,2,4,8,16,32,64].join(',');
     this.reviewResult = REVIEW_RESULT.NONE;
+    this.cardType = 0;
     // this.referenceDayCount = 1;   // 1을 설정하게 되면, 무조건 review 를 시작하고, 실패시 재등록을 하게 됨
   }
   
