@@ -1,7 +1,11 @@
 <div class="container">
   <section>
-    <div class="form-row">
+    <div class="row">
       <div class="form-inline">
+        <div class="col-sm-12">
+          <card-type-dropdown buttonTitle="Filter" [(cardType)]="cardType" (cardTypeChange)="changeCardType($event);" [cardTypeNameList]="cardTypeNameList" ></card-type-dropdown>
+        </div>
+      
         <div class="input-group mb-2 mr-sm-2">
           <div class="input-group-prepend">
             <div class="input-group-text">복습일차</div>
@@ -10,7 +14,7 @@
         </div>
         <button #bRoadCards
                 class="btn btn-outline-primary mb-2"
-                (click)="roadCards(); bRoadCards();"
+                (click)="roadCards();"
                 [disabled]="isUpdatingResult">카드 가져오기</button>
         <button #bSuffle
                 class="btn btn-outline-secondary mb-2"

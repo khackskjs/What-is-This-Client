@@ -66,7 +66,6 @@ export class CardInformation {
     newCI.dayOfStudy        = ci.dayOfStudy;
     newCI.english           = ci.english;
     newCI.genDate           = ci.genDate;
-    // newCI.id = ci.id;
     newCI.korean            = ci.korean;
     newCI.reviewDates       = ci.reviewDates;
     newCI.userId            = ci.userId;
@@ -93,5 +92,12 @@ export class CardInformation {
       console.warn('review dates format is wrong');
       return false;
     }
+  }
+  /**
+   * 해당 카드가 전달하는 cardType중 하나에 해당하는지 여부를 반환
+   * @param {number} cardType 
+   */
+  public isMatchedCardType(cardType: number): boolean {
+    return (this.cardType & cardType) > 0;
   }
 }
