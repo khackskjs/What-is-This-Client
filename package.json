@@ -30,7 +30,7 @@
     "ng-gapi": "0.0.45",
     "parse-numeric-range": "0.0.2",
     "rxjs": "^5.5.6",
-    "underscore": "^1.8.3",
+    "underscore": "^1.12.1",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
